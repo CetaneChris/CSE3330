@@ -18,6 +18,61 @@ USE `food`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer` (
+  `IDNO` int(11) NOT NULL,
+  `NAME` varchar(254) NOT NULL,
+  `PHONENO` varchar(12) NOT NULL,
+  `ADDRESS` varchar(256) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `USERNAME` varchar(12) NOT NULL,
+  `PASSWORD` varchar(12) NOT NULL,
+  `CREATEDDATE` datetime NOT NULL,
+  UNIQUE KEY `EMAIL_UNIQUE` (`EMAIL`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer`
+--
+
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order` (
+  `PRODUCT` varchar(15) NOT NULL,
+  `CUST_IDNO` varchar(45) NOT NULL,
+  `QUANTITY` int(11) NOT NULL,
+  `PRICE_EACH` varchar(10) NOT NULL,
+  `TOTAL_PAID` varchar(10) NOT NULL,
+  PRIMARY KEY (`PRODUCT`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `product`
 --
 
@@ -53,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-19 17:43:28
+-- Dump completed on 2017-09-19 17:49:55
