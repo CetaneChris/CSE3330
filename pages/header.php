@@ -51,121 +51,16 @@ session_start();?>
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/index.php"><i class="fa fa-ticket fa-fw"></i> FabApp</a>
+                            <a href="/index.php"><i class="fa fa-building fa-fw"></i> Home</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-calculator fa-fw"></i> Tools</a>
+                            <a href="/pages/products.php"><i class="fa fa-shopping-cart fa-fw"></i> Products</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-gift fa-fw"></i> Pick Up 3D Print<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-                            <form name="pickForm" method="POST" action="" autocomplete="off" onsubmit="return validateNum('pickForm')">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" name="pickField" class="form-control" placeholder="Enter ID #" maxlength="10" size="10">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="pickBtn">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                        </span>
-                                    </div>
-                                </li>
-                            </form>
-                            </ul>
+                            <a href="/pages/customers.php"><i class="fa fa-users fa-fw"></i> Customers</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-search fa-fw"></i> Look-Up By<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                            <form name="searchForm" method="POST" action="" autocomplete="off"  onsubmit="return validateNum('searchForm')"> 
-                                <li class="sidebar-radio">
-                                    <input type="radio" name="searchType" value="trans" id="trans" checked onchange="searchF()" onclick="searchF()"><label for="trans">Ticket</label>
-                                    <input type="radio" name="searchType" value="operator" id="operator" onchange="searchF()" onclick="searchF()"><label for="operator">ID #</label>
-                                </li>
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="number" name="searchField" class="form-control" placeholder="Search..." name="searchField" onclick="searchF()">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="searchBtn">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                        </span>
-                                    </div>
-                                </li>
-                            </form>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Service Request<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/service/newTicket.php"><i class="fa fa-fire fa-fw"></i> Report Issue</a>
-                                </li>
-                                <li>
-                                    <a href="/service/sortableHistory.php"><i class="fa fa-history fa-fw"></i> History</a>
-                                </li>
-                                <li><a href='/service/technicians.php'><i class='fa fa-comment-o fa-fw'></i> Open Tickets</a></li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Admin<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/admin/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-money fa-fw"></i> Accounts<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#"><i class="fa fa-edit fa-fw"></i> Manage Accounts</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-balance-scale fa-fw"></i> Reconcile</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
-                                </li>
-                                <li>
-                                    <a herf="#"><i class="fa fa-cubes fa-fw"></i> Devices<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#"><i class="fa fa-cube fa-fw"></i> Manage Device</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-life-buoy fa-fw"></i> Device Materials</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a herf="#"><i class="fa fa-linode fa-fw"></i> Materials<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Inventory</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-truck fa-fw"></i> Receive</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-life-buoy fa-fw"></i> Manage Materials</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a herf="#"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#"><i class="fa fa-user-circle-o fa-fw"></i> Manage Users</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-tag fa-fw"></i> Citation</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="/pages/orders.php"><i class="fa fa-search fa-fw"></i> Orders</a>
                         </li>
                     </ul>
                 </div>

@@ -106,10 +106,36 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-calculator fa-fw"></i> Col 4
+                    <i class="fa fa-child fa-fw"></i> Customers
                 </div>
                 <div class="panel-body">
-                    
+					<table id="history" class="table table-striped table-bordered"><?php
+						$query = "SELECT NAME, IDNUMBER FROM CUSTOMER ORDER BY NAME ASC";
+        
+						$result = $mysqli->query($query);
+				
+				        //display column headers
+				        echo "<thead>";
+					      	echo "<th style='text-align:center' width=\"" . 2*(100/(mysqli_num_fields($result)+2)) . "%\">Name</th>";
+	            			echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+2) . "%\">Customer ID</th></tr>";
+				        echo "</thead>";
+
+				        //display the data
+				        echo "<tbody>";
+				          	while($row = mysqli_fetch_array($result)){
+				               	echo "<tr>";
+
+				               	//Device Name
+				               	echo "<td align='center' style='padding: 15px'>";
+
+				               	echo "</td>";
+
+        			          	//By
+				               	echo "<td align='center' style='padding: 2px;'>Invalid User ID</td>";
+							}
+			                  ?>   
+			            </tbody>
+					</table>
                 </div>
                 <!-- /.panel-body -->
             </div>
