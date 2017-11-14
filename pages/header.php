@@ -25,9 +25,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <?php
-$staff = null;
 ob_start();
 date_default_timezone_set('America/Chicago');
+include_once ($_SERVER['DOCUMENT_ROOT'].'/connections/db_connect8.php');
 session_start();?>
 </head>
 <body>
@@ -73,7 +73,6 @@ session_start();?>
                             </form>
                             </ul>
                         </li>
-<!-- if role > 6 {show} else {look up trans staff->getID()} -->
                         <li>
                             <a href="#"><i class="fa fa-search fa-fw"></i> Look-Up By<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
