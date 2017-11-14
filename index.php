@@ -22,15 +22,13 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
                 </div>
                 <div class="panel-body">
                     <table id="history" class="table table-striped table-bordered"><?php
-							$query = "SELECT DESCRIPTION, TYPE, QUANTITY, COST, PRODUCT_IMAGE FROM PRODUCT";
+							$query = "SELECT DESCRIPTION, COST, PRODUCT_IMAGE FROM PRODUCT";
         
 							$result = $mysqli->query($query);
 				
 				        	//display column headers
 				            echo "<thead>";
 					        	echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Description</th>";
-	        					echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Type</th>";
-					        	echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Quantity</th>";
 	        					echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Cost</th>";
 	            				echo "<th style='text-align:center' width=\"" . 4*(100/(mysqli_num_fields($result)+3)) . "%\">Image</th></tr>";
 				            echo "</thead>";

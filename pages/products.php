@@ -5,20 +5,20 @@
  */
 include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 ?>
-<title>Food Service Vendor Home</title>
+<title>Food Service Vendor Products</title>
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Home</h1>
+            <h1 class="page-header">Products</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-briefcase fa-fw"></i> Inventory
+                    <i class="fa fa-briefcase fa-fw"></i> Current Inventory
                 </div>
                 <div class="panel-body">
                     <table id="history" class="table table-striped table-bordered"><?php
@@ -102,50 +102,17 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
                 </div>
             </div>
         </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-child fa-fw"></i> Customers
-                </div>
-                <div class="panel-body">
-					<table id="history" class="table table-striped table-bordered"><?php
-						$query = "SELECT NAME, IDNUMBER FROM CUSTOMER ORDER BY NAME ASC";
-        
-						$result = $mysqli->query($query);
-				
-				        //display column headers
-				        echo "<thead>";
-					      	echo "<th style='text-align:center' width=\"" . 2*(100/(mysqli_num_fields($result)+2)) . "%\">Name</th>";
-	            			echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+2) . "%\">Customer ID</th></tr>";
-				        echo "</thead>";
-
-				        //display the data
-				        echo "<tbody>";
-				          	while($row = mysqli_fetch_array($result)){
-				               	echo "<tr>";
-
-				               	//Device Name
-				               	echo "<td align='center' style='padding: 15px'>";
-
-				               	echo "</td>";
-
-        			          	//By
-				               	echo "<td align='center' style='padding: 2px;'>Invalid User ID</td>";
-							}
-			                  ?>   
-			            </tbody>
-					</table>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <!-- /.col-lg-4 -->
+        <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
 </div>
 <!-- /#page-wrapper -->
+
+<script type="text/javascript" charset="utf-8">
+	window.onload = function() {
+	   	$('#history').DataTable();
+    };
+</script>
 <?php
 //Standard call for dependencies
 include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/footer.php');

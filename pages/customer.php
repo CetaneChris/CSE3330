@@ -5,34 +5,35 @@
  */
 include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 ?>
-<title>Food Service Vendor Home</title>
+<title>Food Service Vendor Customer</title>
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Home</h1>
+            <h1 class="page-header">Customer</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-briefcase fa-fw"></i> Inventory
+                    <i class="fa fa-briefcase fa-fw"></i> Customer Details
                 </div>
                 <div class="panel-body">
                     <table id="history" class="table table-striped table-bordered"><?php
-							$query = "SELECT DESCRIPTION, TYPE, QUANTITY, COST, PRODUCT_IMAGE FROM PRODUCT";
+							$query = "SELECT name, phoneno, address, email, username, createddate FROM CUSTOMER ORDER BY IDNUMBER";
         
 							$result = $mysqli->query($query);
 				
 				        	//display column headers
 				            echo "<thead>";
-					        	echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Description</th>";
-	        					echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Type</th>";
-					        	echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Quantity</th>";
-	        					echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Cost</th>";
-	            				echo "<th style='text-align:center' width=\"" . 4*(100/(mysqli_num_fields($result)+3)) . "%\">Image</th></tr>";
+					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Name</th>";
+	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Phone Number</th>";
+					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Address</th>";
+	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Email</th>";
+	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Username</th>";
+	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Creation Date</th>";
 				            echo "</thead>";
 
 				            //display the data
@@ -40,61 +41,25 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 				            	while($row = mysqli_fetch_array($result)){
 				                  	echo "<tr>";
 
-				                  	//Device Name
-				                  	echo "<td align='center' style='padding: 15px'>";
-				                  	foreach($deviceList as $rowDev){
-				                  		if($row['d_id'] == $rowDev['d_id']){
-				                  			$deviceName = $rowDev['device_desc'];
-	        			          			break;
-	                  					}
-	                  				}
+				                  	//Name
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['name'] . "</td>";
 
-		                  			echo $deviceName;
-	                  				echo "</td>";
+	        			          	//Phone Number
+            			      		echo "<td align='center' style='padding: 15px'>" . $row['phoneno'] . "</td>";
+	                  				
+	                  				//Address
+                  					echo "<td align='center' style='padding: 15px'>" . $row['address'] . "</td>";
 
-	        			          	//By
-	                  				if($staffIcon = $mysqli->query("
-									    SELECT icon
-									    FROM users
-									    WHERE operator = " . $row['staff_id'])){
-									    if($staffIcon->num_rows > 0){
-									    	$staffIcon = mysqli_fetch_array($staffIcon, MYSQLI_ASSOC);
-								    		echo "<td align='center' style='padding: 15px'><i class='fa fa-" . $staffIcon['icon'] . " fa-lg fa-fw'></i></td>";
-	    						    	}
-	    						    	else
-	    						    		echo "<td align='center' style='padding: 2px;'>Invalid User ID</td>";
-	                		  		}
-				            		else
-	            			      		echo "<td align='center' style='padding: 2px;'>Invalid User ID</td>";
+				                  	//Email
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['email'] . "</td>";
 
-	                  				//Reply Count
-				                  	if($rows = $mysqli->query("SELECT * FROM reply WHERE sc_id = " . $row['sc_id'])){
-	            			      		$row_cnt = $rows->num_rows;
-	                  					echo "<td align='center' style='padding: 15px'><a href = '/service/individualHistory.php?service_call_id=".$row['sc_id']."'>" . $row_cnt . "</td>";
-				                  	}
-	            			      	else
-	                  					echo "<td align='center' style='padding: 15px'>There was an error loading the reply count</td>";
-
-				                  	//Solved
-				                  	echo "<td align='center' style='padding: 15px'>";
-				                  	if($row['solved'] == 'Y'){
-				                  		echo 'Complete';
-				                  	} else {
-				                  		echo 'Incomplete';
-				                  	}
-				                  	echo "</td>";
-
-				                  	//Service Notes
-				                  	if($serviceLevel = $mysqli->query("SELECT msg FROM service_lvl WHERE sl_id = " . $row['sl_id'])){
-										if($serviceLevel->num_rows > 0){
-											$serviceLevel = mysqli_fetch_array($serviceLevel, MYSQLI_ASSOC);
-											echo "<td align='center' style='padding: 15px'><strong>" . $serviceLevel['msg'] . "</strong> - " . $row['sc_notes'] . "</td>";
-										}
-										else
-											echo "<td align='center' style='padding: 2px'>Invalid Service Level</td>";
-									}
-									else
-										echo "<td align='center' style='padding: 15px'>Invalid Service Level</td>";
+				                  	//Username
+									echo "<td align='center' style='padding: 15px'>" . $row['username'] . "</td>";
+									
+									//Creation Date
+									echo "<td align='center' style='padding: 15px'>" . $row['createddate'] . "</td>";
+									
+									echo "</tr>";
 				                  }
 			                  ?>   
 			            </tbody>
@@ -102,50 +67,18 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
                 </div>
             </div>
         </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-child fa-fw"></i> Customers
-                </div>
-                <div class="panel-body">
-					<table id="history" class="table table-striped table-bordered"><?php
-						$query = "SELECT NAME, IDNUMBER FROM CUSTOMER ORDER BY NAME ASC";
-        
-						$result = $mysqli->query($query);
-				
-				        //display column headers
-				        echo "<thead>";
-					      	echo "<th style='text-align:center' width=\"" . 2*(100/(mysqli_num_fields($result)+2)) . "%\">Name</th>";
-	            			echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+2) . "%\">Customer ID</th></tr>";
-				        echo "</thead>";
-
-				        //display the data
-				        echo "<tbody>";
-				          	while($row = mysqli_fetch_array($result)){
-				               	echo "<tr>";
-
-				               	//Device Name
-				               	echo "<td align='center' style='padding: 15px'>";
-
-				               	echo "</td>";
-
-        			          	//By
-				               	echo "<td align='center' style='padding: 2px;'>Invalid User ID</td>";
-							}
-			                  ?>   
-			            </tbody>
-					</table>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-        <!-- /.col-lg-4 -->
+        <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+    <!-- NEW ROW HERE -->
 </div>
 <!-- /#page-wrapper -->
+
+<script type="text/javascript" charset="utf-8">
+	window.onload = function() {
+	   	$('#history').DataTable();
+    };
+</script>
 <?php
 //Standard call for dependencies
 include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/footer.php');

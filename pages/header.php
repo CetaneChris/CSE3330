@@ -57,7 +57,7 @@ session_start();?>
                             <a href="/pages/products.php"><i class="fa fa-shopping-cart fa-fw"></i> Products</a>
                         </li>
                         <li>
-                            <a href="/pages/customers.php"><i class="fa fa-users fa-fw"></i> Customers</a>
+                            <a href="/pages/customer.php"><i class="fa fa-users fa-fw"></i> Customers</a>
                         </li>
                         <li>
                             <a href="/pages/orders.php"><i class="fa fa-search fa-fw"></i> Orders</a>
