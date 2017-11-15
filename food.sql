@@ -89,7 +89,6 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 INSERT INTO `product` VALUES(1, 'Hot Dog', 'MAINDISH', 50, '1.50', 'hotdog.png');
 INSERT INTO `product` VALUES(2, 'Hamburger', 'MAINDISH', 32, '2.00', 'hamburger.png');
-INSERT INTO `product` VALUES(3, 'Test', 'BEVERAGE', 2, '2.50', 'grade.JPG');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
