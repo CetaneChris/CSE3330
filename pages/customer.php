@@ -1,10 +1,4 @@
-<?php
-/*
- *   CC BY-NC-AS UTA FabLab 2016-2017
- *   FabApp V 0.9
- */
-include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
-?>
+<?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor Customer</title>
 <div id="page-wrapper">
     <div class="row">
@@ -57,7 +51,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 									echo "<td align='center' style='padding: 15px'>" . $row['username'] . "</td>";
 									
 									//Creation Date
-									echo "<td align='center' style='padding: 15px'>" . date('F j', strtotime($row['createddate'])) . "</td>";
+									echo "<td align='center' style='padding: 15px'>" . date('F j Y', strtotime($row['createddate'])) . "</td>";
 									
 									echo "</tr>";
 				                  }

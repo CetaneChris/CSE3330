@@ -1,10 +1,4 @@
-<?php
-/*
- *   CC BY-NC-AS UTA FabLab 2016-2017
- *   FabApp V 0.9
- */
-include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
-?>
+<?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');?>
 <title>Food Service Vendor Products</title>
 <div id="page-wrapper">
     <div class="row">
@@ -17,8 +11,9 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div style="height: 50px;padding:10" class="panel-heading">
                     <span class="fa fa-briefcase fa-fw" align="left"></span> Current Inventory
+                    <a class="btn btn-primary btn-sm pull-right" role="button" href="/pages/newProduct.php"><span class="fa fa-plus-circle fa-fw"></span> New Product</a>
                 </div>
                 <div class="panel-body">
                     <table id="products" class="table table-striped table-bordered"><?php
@@ -57,7 +52,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 
 				                  	//Cost
 				                  	//Description
-				                  	echo "<td align='center' style='padding: 15px'>$" . $row['cost'] . "</td>";
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['cost'] . "</td>";
 
 				                  	//Image
 				                  	//Description
@@ -68,7 +63,6 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 					</table>
                 </div>
             </div>
-            <a class="btn btn-primary" role="button" href="/pages/newProduct.php"><span class="fa fa-plus-circle fa-fw"></span> New Product</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>

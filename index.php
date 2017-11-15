@@ -1,10 +1,4 @@
-<?php
-/*
- *   CC BY-NC-AS UTA FabLab 2016-2017
- *   FabApp V 0.9
- */
-include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
-?>
+<?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor Home</title>
 <div id="page-wrapper">
     <div class="row">

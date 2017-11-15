@@ -1,12 +1,12 @@
 <?php include_once ($_SERVER ['DOCUMENT_ROOT'] . '/pages/header.php'); ?>
 <script src="jquery.js"> </script>
-<title>Food Service Vendor New Product</title>
+<title>Food Service Vendor New Customer</title>
 
 <body>
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">New Product</h1>
+                <h1 class="page-header">New Customer</h1>
             </div>
         </div>
         <!-- /.row -->
@@ -17,52 +17,55 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-shopping-cart fa-fw"></i> New Product
+                        <i class="fa fa-shopping-cart fa-fw"></i> New Customer
                     </div>
-                    <form name="scform" method= "POST"  action="/service/insertProduct.php" onsubmit="return validateForm();">
+                    <form name="scform" method= "POST"  action="/service/insertCustomer.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
                             <tr>
-                                <td>Product Name</td>
+                                <td>Name</td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="description" rows="1" name="description" style="resize: none"></textarea>
+                                        <textarea class="form-control" id="name" rows="1" name="name" style="resize: none"></textarea>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Type</td>
-                                <td>
-                                    <select class="form-control" name="prodType" id="prodType">
-                                        <option value="" > Select Group</option>
-                                        <option value="APPETIZER">APPETIZER</option>
-                                        <option value="SALAD">SALAD</option>
-                                        <option value="BEVERAGE">BEVERAGE</option>
-                                        <option value="MAINDISH">MAINDISH</option>
-                                        <option value="DESSERT">DESSERT</option> 
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Quantity</td>
+                                <td>Phone Number</td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="quantity" rows="1" name="quantity" style="resize: none"></textarea>
+                                        <textarea class="form-control" id="pno" rows="1" name="pno" style="resize: none"></textarea>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Cost</td>
+                                <td>Address</td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="cost" rows="1" name="cost" style="resize: none"></textarea>
+                                        <textarea class="form-control" id="address" rows="1" name="address" style="resize: none"></textarea>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Product File Name</td>
+                                <td>Email</td>
+                                <td>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="email" rows="1" name="email" style="resize: none"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Username</td>
                                 <td>
                                 	<div class="form-group">
-                                        <textarea class="form-control" id="fileName" rows="1" name="fileName" style="resize: none"></textarea>
+                                        <textarea class="form-control" id="username" rows="1" name="username" style="resize: none"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td>
+                                	<div class="form-group">
+                                        <textarea class="form-control" id="password" rows="1" name="password" style="resize: none"></textarea>
                                     </div>
                                 </td>
                             </tr>

@@ -22,7 +22,7 @@
                     <form name="scform" method= "POST"  action="/service/insertProduct.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
                             <tr>
-                                <td>Product Name</td>
+                                <td>Description</td>
                                 <td>
                                     <div class="form-group">
                                         <textarea class="form-control" id="description" rows="1" name="description" style="resize: none"></textarea>
