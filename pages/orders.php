@@ -21,7 +21,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
                     <i class="fa fa-briefcase fa-fw"></i> Current Orders
                 </div>
                 <div class="panel-body">
-                    <table id="history" class="table table-striped table-bordered"><?php
+                    <table id="orders" class="table table-striped table-bordered"><?php
 							$query = "SELECT * FROM `ORDER` ORDER BY PRODUCT_ID ASC";
         
 							$result = $mysqli->query($query);
@@ -71,16 +71,17 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 				                  	echo "<td align='center' style='padding: 15px'>" . $row['QUANTITY'] . "</td>";
 
 				                  	//Price Each
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['PRICE_EACH'] . "</td>";
+				                  	echo "<td align='center' style='padding: 15px'>$" . $row['PRICE_EACH'] . "</td>";
 
 				                  	//Total Paid
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['TOTAL_PAID'] . "</td>";
+				                  	echo "<td align='center' style='padding: 15px'>$" . $row['TOTAL_PAID'] . "</td>";
 				                  }
 			                  ?>   
 			            </tbody>
 					</table>
                 </div>
             </div>
+            <a class="btn btn-primary" role="button" href="/pages/newOrder.php"><span class="fa fa-plus-circle fa-fw"></span> New Order</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -90,7 +91,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 
 <script type="text/javascript" charset="utf-8">
 	window.onload = function() {
-	   	$('#history').DataTable();
+	   	$('#orders').DataTable();
     };
 </script>
 <?php

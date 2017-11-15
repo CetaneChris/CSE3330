@@ -18,89 +18,57 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-briefcase fa-fw"></i> Current Inventory
+                    <span class="fa fa-briefcase fa-fw" align="left"></span> Current Inventory
                 </div>
                 <div class="panel-body">
-                    <table id="history" class="table table-striped table-bordered"><?php
-							$query = "SELECT DESCRIPTION, TYPE, QUANTITY, COST, PRODUCT_IMAGE FROM PRODUCT";
+                    <table id="products" class="table table-striped table-bordered"><?php
+							$query = "SELECT product_id, description, type, quantity, cost, product_image FROM PRODUCT ORDER BY product_id ASC";
         
 							$result = $mysqli->query($query);
 				
 				        	//display column headers
 				            echo "<thead>";
-					        	echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Description</th>";
-	        					echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Type</th>";
-					        	echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Quantity</th>";
-	        					echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+3) . "%\">Cost</th>";
-	            				echo "<th style='text-align:center' width=\"" . 4*(100/(mysqli_num_fields($result)+3)) . "%\">Image</th></tr>";
+				            	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Product ID</th>";
+					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Description</th>";
+	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Type</th>";
+					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Quantity</th>";
+	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Cost</th>";
+	            				echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Image</th></tr>";
 				            echo "</thead>";
 
 				            //display the data
 				            echo "<tbody>";
 				            	while($row = mysqli_fetch_array($result)){
 				                  	echo "<tr>";
+				                  	
+				                  	//Product ID
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['product_id'] . "</td>";
 
-				                  	//Device Name
-				                  	echo "<td align='center' style='padding: 15px'>";
-				                  	foreach($deviceList as $rowDev){
-				                  		if($row['d_id'] == $rowDev['d_id']){
-				                  			$deviceName = $rowDev['device_desc'];
-	        			          			break;
-	                  					}
-	                  				}
+				                  	//Description
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['description'] . "</td>";
 
-		                  			echo $deviceName;
-	                  				echo "</td>";
+	        			          	//Type
+	                  				//Description
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['type'] . "</td>";
 
-	        			          	//By
-	                  				if($staffIcon = $mysqli->query("
-									    SELECT icon
-									    FROM users
-									    WHERE operator = " . $row['staff_id'])){
-									    if($staffIcon->num_rows > 0){
-									    	$staffIcon = mysqli_fetch_array($staffIcon, MYSQLI_ASSOC);
-								    		echo "<td align='center' style='padding: 15px'><i class='fa fa-" . $staffIcon['icon'] . " fa-lg fa-fw'></i></td>";
-	    						    	}
-	    						    	else
-	    						    		echo "<td align='center' style='padding: 2px;'>Invalid User ID</td>";
-	                		  		}
-				            		else
-	            			      		echo "<td align='center' style='padding: 2px;'>Invalid User ID</td>";
+	                  				//Quantity
+				                  	//Description
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['quantity'] . "</td>";
 
-	                  				//Reply Count
-				                  	if($rows = $mysqli->query("SELECT * FROM reply WHERE sc_id = " . $row['sc_id'])){
-	            			      		$row_cnt = $rows->num_rows;
-	                  					echo "<td align='center' style='padding: 15px'><a href = '/service/individualHistory.php?service_call_id=".$row['sc_id']."'>" . $row_cnt . "</td>";
-				                  	}
-	            			      	else
-	                  					echo "<td align='center' style='padding: 15px'>There was an error loading the reply count</td>";
+				                  	//Cost
+				                  	//Description
+				                  	echo "<td align='center' style='padding: 15px'>$" . $row['cost'] . "</td>";
 
-				                  	//Solved
-				                  	echo "<td align='center' style='padding: 15px'>";
-				                  	if($row['solved'] == 'Y'){
-				                  		echo 'Complete';
-				                  	} else {
-				                  		echo 'Incomplete';
-				                  	}
-				                  	echo "</td>";
-
-				                  	//Service Notes
-				                  	if($serviceLevel = $mysqli->query("SELECT msg FROM service_lvl WHERE sl_id = " . $row['sl_id'])){
-										if($serviceLevel->num_rows > 0){
-											$serviceLevel = mysqli_fetch_array($serviceLevel, MYSQLI_ASSOC);
-											echo "<td align='center' style='padding: 15px'><strong>" . $serviceLevel['msg'] . "</strong> - " . $row['sc_notes'] . "</td>";
-										}
-										else
-											echo "<td align='center' style='padding: 2px'>Invalid Service Level</td>";
-									}
-									else
-										echo "<td align='center' style='padding: 15px'>Invalid Service Level</td>";
+				                  	//Image
+				                  	//Description
+				                  	echo "<td align='center' style='padding: 15px'><img src=\"/images/" . $row['product_image'] . "\" alt=\"" . $row['description'] . "\" style=\"width:50px;height:50px\"></td>";
 				                  }
 			                  ?>   
 			            </tbody>
 					</table>
                 </div>
             </div>
+            <a class="btn btn-primary" role="button" href="/pages/newProduct.php"><span class="fa fa-plus-circle fa-fw"></span> New Product</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -110,7 +78,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 
 <script type="text/javascript" charset="utf-8">
 	window.onload = function() {
-	   	$('#history').DataTable();
+	   	$('#products').DataTable();
     };
 </script>
 <?php

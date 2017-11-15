@@ -9,7 +9,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Customer</h1>
+            <h1 class="page-header">Customers</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -21,7 +21,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
                     <i class="fa fa-briefcase fa-fw"></i> Customer Details
                 </div>
                 <div class="panel-body">
-                    <table id="history" class="table table-striped table-bordered"><?php
+                    <table id="customers" class="table table-striped table-bordered"><?php
 							$query = "SELECT name, phoneno, address, email, username, createddate FROM CUSTOMER ORDER BY IDNUMBER";
         
 							$result = $mysqli->query($query);
@@ -57,7 +57,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 									echo "<td align='center' style='padding: 15px'>" . $row['username'] . "</td>";
 									
 									//Creation Date
-									echo "<td align='center' style='padding: 15px'>" . $row['createddate'] . "</td>";
+									echo "<td align='center' style='padding: 15px'>" . date('F j', strtotime($row['createddate'])) . "</td>";
 									
 									echo "</tr>";
 				                  }
@@ -66,6 +66,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 					</table>
                 </div>
             </div>
+            <a class="btn btn-primary" role="button" href="/pages/newCustomer.php"><span class="fa fa-plus-circle fa-fw"></span> New Customer</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -76,7 +77,7 @@ include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');
 
 <script type="text/javascript" charset="utf-8">
 	window.onload = function() {
-	   	$('#history').DataTable();
+	   	$('#customers').DataTable();
     };
 </script>
 <?php
