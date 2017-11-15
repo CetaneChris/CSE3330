@@ -7,49 +7,18 @@
 		exit ();
 	}
 
-	$description = $staff->getOperator();
-	
-	$sl_id = $_POST['service_level'];
-	$srnotes = $_POST['notes'];
-	$srtime = date("Y-m-d h:i:s");
-	
-	switch($_POST['service_level']){
-		case 100:				//case for completed ticket
-			$solvedSt = "Y";
-		break;
-		default:
-			$solvedSt = "N";
-		break;
-	}
-	
-	if($_POST['dev'] == 0){
-			echo "Invalid Machine Choice";
-			header("refresh:5; url=/service/individualHistory.php?service_call_id=$sc_id");
-	}else 
-		$devID = $_POST['dev'];
-	
-	$sl_id = $_POST['service_level'];
-	$srnotes = $_POST['notes'];
-	$srtime = date("Y-m-d h:i:s");
+	$description = $_POST['description'];	
+	$type = $_POST['prodType'];
+	$quantity = $_POST['quantity'];
+	$cost = $_POST['cost'];
+	$product_image = $_POST['fileName'];
 
-	if($_POST['service_level'] == 100){
-		//case for completed ticket
-		$solvedSt = "Y";
-		$srnotes .= "\nTicket marked as completed.";
-	}else
-		$solvedSt = "N";
-	
-	$insert = "INSERT INTO `reply` (`sc_id`, `staff_id`, `sr_notes`, `sr_time`) VALUES ('".$sc_id."', '".$staffID."', '".$srnotes."', '".$srtime."');";
-	$update = "UPDATE `service_call` SET `d_id`=".$devID.",`sl_id`=".$sl_id.",`solved`='".$solvedSt."' WHERE `sc_id` = ".$sc_id;
-	if($result = $mysqli->query($insert)){
-		if($result = $mysqli->query($update))
-			$fieldReport = "Your update has been submitted, thank you!";
-		else
-			$fieldReport = "Error in updating";
-	}
+	$insert = "INSERT INTO `product` (`product_id`, `description`, `type`, `quantity`, `cost`, `product_image`) VALUES (NULL, '" . $description . "', '" . $type."', '" . $quantity . "', '" . $cost . "', '" . $product_image . "');";
+	if($result = $mysqli->query($insert))
+		$fieldReport = "Your update has been submitted, thank you!";
 	else
 		$fieldReport = "Error in submitting";
-	header("refresh:5; url=/service/individualHistory.php?service_call_id=$sc_id");
+	header("refresh:10; url=/pages/newProduct.php");
 
 ?>
 

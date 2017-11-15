@@ -19,7 +19,7 @@
                     <div class="panel-heading">
                         <i class="fa fa-shopping-cart fa-fw"></i> New Product
                     </div>
-                    <form name="scform" method= "POST"  action="/service/insertProduct.php" onsubmit="return validateForm();">
+                    <form name="neworder" method= "POST"  action="/pages/insertProduct.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
                             <tr>
                                 <td>Description</td>
@@ -99,7 +99,7 @@
     	var dg = document.getElementById("prodType").value;
     	var dev= document.getElementById("deviceList").value;
     	var radiocheck= false;
-    	if(validateRadio(document.forms["scform"]["optradio"])){
+    	if(validateRadio(document.forms["neworder"]["optradio"])){
     		radiocheck = true;
     	}
     
