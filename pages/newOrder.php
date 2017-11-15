@@ -6,7 +6,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">New Product</h1>
+                <h1 class="page-header">Order Form</h1>
             </div>
         </div>
         <!-- /.row -->
@@ -17,29 +17,24 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-shopping-cart fa-fw"></i> New Product
+                        <i class="fa fa-shopping-cart fa-fw"></i> New Order
                     </div>
-                    <form name="neworder" method= "POST"  action="/pages/insertProduct.php" onsubmit="return validateForm();">
+                    <form name="neworder" method= "POST"  action="/pages 	/insertProduct.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
                             <tr>
-                                <td>Description</td>
+                                <td>Product ID</td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="description" rows="1" name="description" style="resize: none"></textarea>
+                                        <textarea class="form-control" id="prod" rows="1" name="prod" style="resize: none"></textarea>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Type</td>
+                                <td>Customer ID</td>
                                 <td>
-                                    <select class="form-control" name="prodType" id="prodType">
-                                        <option value="" > Select Group</option>
-                                        <option value="APPETIZER">APPETIZER</option>
-                                        <option value="SALAD">SALAD</option>
-                                        <option value="BEVERAGE">BEVERAGE</option>
-                                        <option value="MAINDISH">MAINDISH</option>
-                                        <option value="DESSERT">DESSERT</option> 
-                                    </select>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="cust" rows="1" name="cust" style="resize: none"></textarea>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -47,22 +42,6 @@
                                 <td>
                                     <div class="form-group">
                                         <textarea class="form-control" id="quantity" rows="1" name="quantity" style="resize: none"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cost</td>
-                                <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="cost" rows="1" name="cost" style="resize: none"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Product File Name</td>
-                                <td>
-                                	<div class="form-group">
-                                        <textarea class="form-control" id="fileName" rows="1" name="fileName" style="resize: none"></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -80,23 +59,85 @@
             </div>
         </div>
         <!-- /.col-lg-8 -->
+        <div class="col-lg-5">
+            <div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-shopping-cart fa-fw"></i> Customers
+				</div>
+				<div class="panel-body">
+                    <table id="customers" class="table table-striped table-bordered"><?php
+							$query = "SELECT name, idnumber FROM CUSTOMER ORDER BY IDNUMBER";
+        
+							$result = $mysqli->query($query);
+				
+				        	//display column headers
+				            echo "<thead>";
+					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Name</th>";
+	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">ID Number</th>";
+				            echo "</thead>";
+
+				            //display the data
+				            echo "<tbody>";
+				            	while($row = mysqli_fetch_array($result)){
+				                  	echo "<tr>";
+
+				                  	//Name
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['name'] . "</td>";
+
+	        			          	//Phone Number
+            			      		echo "<td align='center' style='padding: 15px'>" . $row['idnumber'] . "</td>";
+
+            			      		echo "</tr>";
+				                  }
+			                  ?>   
+			            </tbody>
+					</table>
+                </div>
+			</div>
+		</div>
+		<div class="col-lg-5">
+            <div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-shopping-cart fa-fw"></i> Products
+				</div>
+				<div class="panel-body">
+                    <table id="products" class="table table-striped table-bordered"><?php
+							$query = "SELECT description, product_id FROM PRODUCT ORDER BY product_id ASC";
+        
+							$result = $mysqli->query($query);
+				
+				        	//display column headers
+				            echo "<thead>";
+					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Description</th>";
+				            	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Product ID</th>";
+				            echo "</thead>";
+
+				            //display the data
+				            echo "<tbody>";
+				            	while($row = mysqli_fetch_array($result)){
+				                  	echo "<tr>";
+
+				                  	//Description
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['description'] . "</td>";
+
+				                  	//Product ID
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['product_id'] . "</td>";
+
+				                  	echo "</tr>";
+				                  }
+			                  ?>   
+			            </tbody>
+					</table>
+                </div>
+			</div>
+		</div>
     </div>
     <!-- /.row -->
     <!-- /#page-wrapper -->
 </body>
 <script type="text/javascript">
-    function validateRadio(radios){
-    	for(i = 0; i< radios.length ; ++i){
-    		if(radios[i].checked){
-    			return true;
-    		}
-    	}
-    	return false;
-    }
-    
-    
-    function validateForm(){
-    	var dg = document.getElementById("prodType").value;
+		function validateForm(){
+    	var name = document.getElementById("prodType").value;
     	var dev= document.getElementById("deviceList").value;
     	var radiocheck= false;
     	if(validateRadio(document.forms["neworder"]["optradio"])){
@@ -115,6 +156,12 @@
     		return false;
     	}
     }
+</script>
+<script type="text/javascript" charset="utf-8">
+	window.onload = function() {
+	   	$('#customers').DataTable();
+	   	$('#products').DataTable();
+    };
 </script>
 <!-- The following script gets the response for device dropdown using dg_id from the group selection -->
 <?php

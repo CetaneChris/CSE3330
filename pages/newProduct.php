@@ -85,29 +85,14 @@
     <!-- /#page-wrapper -->
 </body>
 <script type="text/javascript">
-    function validateRadio(radios){
-    	for(i = 0; i< radios.length ; ++i){
-    		if(radios[i].checked){
-    			return true;
-    		}
-    	}
-    	return false;
-    }
-    
-    
     function validateForm(){
-    	var dg = document.getElementById("prodType").value;
-    	var dev= document.getElementById("deviceList").value;
-    	var radiocheck= false;
-    	if(validateRadio(document.forms["newproduct"]["optradio"])){
-    		radiocheck = true;
-    	}
+    	var name = document.getElementById("description").value;
+    	var type = document.getElementById("prodType").value;
+		var quantity = document.getElementById("quantity").value;
+    	var cost = document.getElementById("cost").value;
+    	var name = document.getElementById("fileName").value;
     
-    
-    	
-    	var notes = document.getElementById("notes").value;
-    
-    	if(dg == "" || dev == "" ||  notes =="" || radiocheck == false){
+    	if(name == "" || type == "" || quantity == "" || cost == "" || name == ""){
     		document.getElementById('errordiv').style.display = 'block';
     
     		document.getElementById("errormessage").innerHTML = "All fields are required";

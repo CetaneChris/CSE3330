@@ -57,6 +57,8 @@
 				                  	//Image
 				                  	//Description
 				                  	echo "<td align='center' style='padding: 15px'><img src=\"/images/" . $row['product_image'] . "\" alt=\"" . $row['description'] . "\" style=\"width:50px;height:50px\"></td>";
+				                  	
+				                  	echo "</tr>";
 				                  }
 			                  ?>   
 			            </tbody>

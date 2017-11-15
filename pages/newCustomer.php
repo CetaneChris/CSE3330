@@ -88,29 +88,15 @@
     <!-- /#page-wrapper -->
 </body>
 <script type="text/javascript">
-    function validateRadio(radios){
-    	for(i = 0; i< radios.length ; ++i){
-    		if(radios[i].checked){
-    			return true;
-    		}
-    	}
-    	return false;
-    }
-    
-    
     function validateForm(){
-    	var dg = document.getElementById("prodType").value;
-    	var dev= document.getElementById("deviceList").value;
-    	var radiocheck= false;
-    	if(validateRadio(document.forms["newcustomer"]["optradio"])){
-    		radiocheck = true;
-    	}
+    	var name  = document.getElementById("name").value;
+    	var pno   = document.getElementById("pno").value;
+    	var addr  = document.getElementById("address").value;
+    	var email = document.getElementById("email").value;
+    	var uname = document.getElementById("username").value;
+    	var pass  = document.getElementById("password").value;
     
-    
-    	
-    	var notes = document.getElementById("notes").value;
-    
-    	if(dg == "" || dev == "" ||  notes =="" || radiocheck == false){
+    	if(name == "" || pno == "" ||  addr == "" || email == "" || uname == "" || pass == ""){
     		document.getElementById('errordiv').style.display = 'block';
     
     		document.getElementById("errormessage").innerHTML = "All fields are required";
