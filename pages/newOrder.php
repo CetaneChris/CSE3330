@@ -1,6 +1,6 @@
 <?php include_once ($_SERVER ['DOCUMENT_ROOT'] . '/pages/header.php'); ?>
 <script src="jquery.js"> </script>
-<title>Food Service Vendor New Product</title>
+<title>Food Service Vendor New Order</title>
 
 <body>
     <div id="page-wrapper">
@@ -19,7 +19,7 @@
                     <div class="panel-heading">
                         <i class="fa fa-shopping-cart fa-fw"></i> New Order
                     </div>
-                    <form name="neworder" method= "POST"  action="/pages 	/insertProduct.php" onsubmit="return validateForm();">
+                    <form name="neworder" method= "POST"  action="/pages/insertOrder.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
                             <tr>
                                 <td>Product ID</td>

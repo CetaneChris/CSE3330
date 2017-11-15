@@ -1,5 +1,5 @@
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
-<title>Food Service Vendor New Product</title>
+<title>Food Service Vendor New Customer</title>
 
 <?php
 	if ($mysqli->connect_errno) {
@@ -7,15 +7,17 @@
 		exit ();
 	}
 
-	$description = $_POST['description'];	
-	$type = $_POST['prodType'];
-	$quantity = $_POST['quantity'];
-	$cost = number_format($_POST['cost'], 2);
-	$product_image = $_POST['fileName'];
+	$name = $_POST['name'];	
+	$phoneno = $_POST['pno'];
+	$address = $_POST['address'];
+	$email = $_POST['email'];
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$createdate = date("Y-m-d");
 
-	$insert = "INSERT INTO `product` (`product_id`, `description`, `type`, `quantity`, `cost`, `product_image`) VALUES (NULL, '" . $description . "', '" . $type."', '" . $quantity . "', '" . $cost . "', '" . $product_image . "');";
+	$insert = "INSERT INTO `customer` (`name`, `phoneno`, `address`, `email`, `username`, `password`, `createddate`, `idnumber`) VALUES ('" . $name . "', '" . $phoneno."', '" . $address . "', '" . $email . "', '" . $username . "', '" . $password . "', '" . $createdate . "', NULL);";
 	if($result = $mysqli->query($insert))
-		$fieldReport = "Your product has been submitted!";
+		$fieldReport = "Your customer has been submitted!";
 	else
 		$fieldReport = "Error in submitting";
 	header("refresh:10; url=/pages/newProduct.php");

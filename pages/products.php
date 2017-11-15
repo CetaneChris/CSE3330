@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div style="height: 50px;padding:10" class="panel-heading">
+                <div style="height: 50px;padding:10px" class="panel-heading">
                     <span class="fa fa-briefcase fa-fw" align="left"></span> Current Inventory
                     <a class="btn btn-primary btn-sm pull-right" role="button" href="/pages/newProduct.php"><span class="fa fa-plus-circle fa-fw"></span> New Product</a>
                 </div>
