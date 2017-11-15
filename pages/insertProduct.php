@@ -11,14 +11,20 @@
 	$type = $_POST['prodType'];
 	$quantity = $_POST['quantity'];
 	$cost = number_format($_POST['cost'], 2);
-	$product_image = $_POST['fileName'];
+	$product_image = $_FILES['fileName']['name'];
 
+	$target_dir = "../images/";
+	$target_file = $target_dir . basename($_FILES["fileName"]["name"]);
+
+	// Upload file
+	move_uploaded_file($_FILES['fileName']['tmp_name'],$target_file);
+	
 	$insert = "INSERT INTO `product` (`product_id`, `description`, `type`, `quantity`, `cost`, `product_image`) VALUES (NULL, '" . $description . "', '" . $type."', '" . $quantity . "', '" . $cost . "', '" . $product_image . "');";
 	if($result = $mysqli->query($insert))
 		$fieldReport = "Your product has been submitted!";
 	else
 		$fieldReport = "Error in submitting";
-	header("refresh:10; url=/pages/newProduct.php");
+	//header("refresh:10; url=/pages/newProduct.php");
 
 ?>
 

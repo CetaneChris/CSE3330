@@ -6,7 +6,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Inventory Form</h1>
+                <h1 class="page-header">New Product</h1>
             </div>
         </div>
         <!-- /.row -->
@@ -17,16 +17,16 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-shopping-cart fa-fw"></i> New Product
+                        <i class="fa fa-shopping-cart fa-fw"></i> All fields are required
                     </div>
-                    <form name="newproduct" method= "POST"  action="/pages/insertProduct.php" onsubmit="return validateForm();">
+                    <form name="newproduct" method="POST" enctype="multipart/form-data" action="/pages/insertProduct.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
-                            <tr>
+                            <tr width="10%">
                                 <td>Product Name</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="description" rows="1" name="description" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="text" class="form-control" id="description" name="description">
+									</div>
                                 </td>
                             </tr>
                             <tr>
@@ -45,25 +45,25 @@
                             <tr>
                                 <td>Quantity</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="quantity" rows="1" name="quantity" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="number" class="form-control" id="quantity" name="quantity" min="0" step="1">
+									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Cost</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="cost" rows="1" name="cost" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="number" class="form-control" id="cost" name="cost" placeholder="$.$$" min="0" step="0.01">
+									</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Product File Name</td>
+                                <td>Product Image</td>
                                 <td>
                                 	<div class="form-group">
-                                        <textarea class="form-control" id="fileName" rows="1" name="fileName" style="resize: none"></textarea>
-                                    </div>
+										<input type="file" class="form-control" id="fileName" name="fileName" accept="image/*">
+									</div>
                                 </td>
                             </tr>
                             <tr>
@@ -84,15 +84,16 @@
     <!-- /.row -->
     <!-- /#page-wrapper -->
 </body>
+
 <script type="text/javascript">
     function validateForm(){
     	var name = document.getElementById("description").value;
     	var type = document.getElementById("prodType").value;
 		var quantity = document.getElementById("quantity").value;
     	var cost = document.getElementById("cost").value;
-    	var name = document.getElementById("fileName").value;
+    	var Fname = document.getElementById("fileName").value;
     
-    	if(name == "" || type == "" || quantity == "" || cost == "" || name == ""){
+    	if(name == "" || type == "" || quantity == "" || cost == "" || Fname == ""){
     		document.getElementById('errordiv').style.display = 'block';
     
     		document.getElementById("errormessage").innerHTML = "All fields are required";

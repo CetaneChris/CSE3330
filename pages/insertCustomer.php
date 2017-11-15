@@ -20,7 +20,7 @@
 		$fieldReport = "Your customer has been submitted!";
 	else
 		$fieldReport = "Error in submitting";
-	header("refresh:10; url=/pages/newProduct.php");
+	header("refresh:10; url=/pages/newCustomer.php");
 
 ?>
 

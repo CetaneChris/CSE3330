@@ -11,8 +11,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-briefcase fa-fw"></i> Customer Details
+                <div style="height: 55px;padding:10px" class="panel-heading">
+                    <button class="btn btn-secondary pull-left"><i class="fa fa-briefcase fa-fw"></i> Customer Details</button>
+                    <a class="btn btn-primary pull-right" role="button" href="/pages/newCustomer.php">New Customer <span class="fa fa-plus-circle fa-fw"></span></a>
                 </div>
                 <div class="panel-body">
                     <table id="customers" class="table table-striped table-bordered"><?php
@@ -36,22 +37,22 @@
 				                  	echo "<tr>";
 
 				                  	//Name
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['name'] . "</td>";
+				                  	echo "<td align='center'>" . $row['name'] . "</td>";
 
 	        			          	//Phone Number
-            			      		echo "<td align='center' style='padding: 15px'>" . $row['phoneno'] . "</td>";
+            			      		echo "<td align='center'>" . $row['phoneno'] . "</td>";
 	                  				
 	                  				//Address
-                  					echo "<td align='center' style='padding: 15px'>" . $row['address'] . "</td>";
+                  					echo "<td align='center'>" . $row['address'] . "</td>";
 
 				                  	//Email
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['email'] . "</td>";
+				                  	echo "<td align='center'>" . $row['email'] . "</td>";
 
 				                  	//Username
-									echo "<td align='center' style='padding: 15px'>" . $row['username'] . "</td>";
+									echo "<td align='center'>" . $row['username'] . "</td>";
 									
 									//Creation Date
-									echo "<td align='center' style='padding: 15px'>" . date('F j Y', strtotime($row['createddate'])) . "</td>";
+									echo "<td align='center'>" . date('F j Y', strtotime($row['createddate'])) . "</td>";
 									
 									echo "</tr>";
 				                  }
@@ -60,7 +61,6 @@
 					</table>
                 </div>
             </div>
-            <a class="btn btn-primary" role="button" href="/pages/newCustomer.php"><span class="fa fa-plus-circle fa-fw"></span> New Customer</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>

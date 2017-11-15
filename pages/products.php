@@ -11,9 +11,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div style="height: 50px;padding:10px" class="panel-heading">
-                    <span class="fa fa-briefcase fa-fw" align="left"></span> Current Inventory
-                    <a class="btn btn-primary btn-sm pull-right" role="button" href="/pages/newProduct.php"><span class="fa fa-plus-circle fa-fw"></span> New Product</a>
+                <div style="height: 55px;padding:10px" class="panel-heading">
+                    <button class="btn btn-secondary pull-left"><i class="fa fa-briefcase fa-fw"></i> Current Inventory</button>
+                    <a class="btn btn-primary pull-right" role="button" href="/pages/newProduct.php">New Product <span class="fa fa-plus-circle fa-fw"></span></a>
                 </div>
                 <div class="panel-body">
                     <table id="products" class="table table-striped table-bordered"><?php
@@ -37,22 +37,22 @@
 				                  	echo "<tr>";
 				                  	
 				                  	//Product ID
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['product_id'] . "</td>";
+				                  	echo "<td align='center'>" . $row['product_id'] . "</td>";
 
 				                  	//Description
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['description'] . "</td>";
+				                  	echo "<td align='center'>" . $row['description'] . "</td>";
 
 	        			          	//Type
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['type'] . "</td>";
+				                  	echo "<td align='center'>" . $row['type'] . "</td>";
 
 	                  				//Quantity
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['quantity'] . "</td>";
+				                  	echo "<td align='center'>" . $row['quantity'] . "</td>";
 
 				                  	//Cost
-				                  	echo "<td align='center' style='padding: 15px'>$" . $row['cost'] . "</td>";
+				                  	echo "<td align='center'>$" . $row['cost'] . "</td>";
 
 				                  	//Image
-				                  	echo "<td align='center' style='padding: 15px'><img src=\"/images/" . $row['product_image'] . "\" alt=\"" . $row['description'] . "\" style=\"width:50px;height:50px\"></td>";
+				                  	echo "<td align='center'><img src=\"/images/" . $row['product_image'] . "\" alt=\"" . $row['description'] . "\" style=\"width:50px;height:50px\"></td>";
 				                  	
 				                  	echo "</tr>";
 				                  }

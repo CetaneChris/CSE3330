@@ -17,56 +17,65 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-shopping-cart fa-fw"></i> New Customer
+                        <i class="fa fa-shopping-cart fa-fw"></i> All fields are required
                     </div>
                     <form name="newcustomer" method= "POST"  action="/pages/insertCustomer.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
                             <tr>
                                 <td>Name</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="name" rows="1" name="name" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="text" class="form-control" id="name" name="name">
+									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Phone Number</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="pno" rows="1" name="pno" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="telephone" class="form-control" id="pno" name="pno" placeholder="XXX-XXX-XXXX">
+									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Address</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="address" rows="1" name="address" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="text" class="form-control" id="address" name="address" placeholder="1234 Main Street, Arlington, Texas 76013">
+									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="email" rows="1" name="email" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="example@server.com">
+										<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Username</td>
                                 <td>
                                 	<div class="form-group">
-                                        <textarea class="form-control" id="username" rows="1" name="username" style="resize: none"></textarea>
+                                        <input type="text" class="form-control" id="username" name="username">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Password</td>
                                 <td>
-                                	<div class="form-group">
-                                        <textarea class="form-control" id="password" rows="1" name="password" style="resize: none"></textarea>
-                                    </div>
+                                    <div class="form-group">
+										<input type="password" class="form-control" id="password" name="password">
+									</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Confirm Password</td>
+                                <td>
+                                    <div class="form-group">
+										<input type="password" class="form-control" id="conf_password" name="conf_password">
+									</div>
                                 </td>
                             </tr>
                             <tr>
@@ -95,6 +104,15 @@
     	var email = document.getElementById("email").value;
     	var uname = document.getElementById("username").value;
     	var pass  = document.getElementById("password").value;
+    	var conf_pass  = document.getElementById("conf_password").value;
+
+    	if(pass != conf_pass){
+    		document.getElementById('errordiv').style.display = 'block';
+    
+    		document.getElementById("errormessage").innerHTML = "Password fields do not match";
+    		
+    		return false;
+    	}
     
     	if(name == "" || pno == "" ||  addr == "" || email == "" || uname == "" || pass == ""){
     		document.getElementById('errordiv').style.display = 'block';

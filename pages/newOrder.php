@@ -6,7 +6,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Order Form</h1>
+                <h1 class="page-header">New Order</h1>
             </div>
         </div>
         <!-- /.row -->
@@ -17,32 +17,58 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-shopping-cart fa-fw"></i> New Order
+                        <i class="fa fa-shopping-cart fa-fw"></i> All fields are required
                     </div>
                     <form name="neworder" method= "POST"  action="/pages/insertOrder.php" onsubmit="return validateForm();">
                         <table class="table table-striped">
                             <tr>
                                 <td>Product ID</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="prod" rows="1" name="prod" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<select class="form-control" id="prod" name="prod">
+										<?php
+											$product_list = "SELECT product_id FROM PRODUCT ORDER BY PRODUCT_ID ASC";
+											echo "<option value=\"\" > Select Product</option>";
+											
+											if ($products = $mysqli->query ($product_list)) {
+												while ( $product = mysqli_fetch_array ( $products ) ) {
+													echo "<option value=" . $product['product_id'] . ">" . $product['product_id'] . "</option>";
+												}
+											}
+											else
+												die("There was an error loading device_group ");
+										?>
+										</select>
+									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Customer ID</td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="cust" rows="1" name="cust" style="resize: none"></textarea>
+                                        <select class="form-control" id="cust" name="cust">
+										<?php
+											$customer_list = "SELECT idnumber FROM customer ORDER BY IDNUMBER ASC";
+											echo "<option value=\"\" > Select Customer</option>";
+											
+											if ($customers = $mysqli->query ($customer_list)) {
+												while ($customer = mysqli_fetch_array($customers) ) {
+													echo "<option value=" . $customer['idnumber'] . ">" . $customer['idnumber'] . "</option>";
+												}
+											}
+											else
+												die("There was an error loading device_group ");
+										?>
+										</select>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Quantity</td>
                                 <td>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="quantity" rows="1" name="quantity" style="resize: none"></textarea>
-                                    </div>
+                                	<div class="form-group">
+										<input type="number" class="form-control" id="quantity" name="quantity"  min="1" step="1">
+									</div>
                                 </td>
                             </tr>
                             <tr>
@@ -60,42 +86,6 @@
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-5">
-            <div class="panel panel-default">
-				<div class="panel-heading">
-					<i class="fa fa-shopping-cart fa-fw"></i> Customers
-				</div>
-				<div class="panel-body">
-                    <table id="customers" class="table table-striped table-bordered"><?php
-							$query = "SELECT name, idnumber FROM CUSTOMER ORDER BY IDNUMBER";
-        
-							$result = $mysqli->query($query);
-				
-				        	//display column headers
-				            echo "<thead>";
-					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Name</th>";
-	        					echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">ID Number</th>";
-				            echo "</thead>";
-
-				            //display the data
-				            echo "<tbody>";
-				            	while($row = mysqli_fetch_array($result)){
-				                  	echo "<tr>";
-
-				                  	//Name
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['name'] . "</td>";
-
-	        			          	//Phone Number
-            			      		echo "<td align='center' style='padding: 15px'>" . $row['idnumber'] . "</td>";
-
-            			      		echo "</tr>";
-				                  }
-			                  ?>   
-			            </tbody>
-					</table>
-                </div>
-			</div>
-		</div>
-		<div class="col-lg-5">
             <div class="panel panel-default">
 				<div class="panel-heading">
 					<i class="fa fa-shopping-cart fa-fw"></i> Products
@@ -119,15 +109,51 @@
 				                  	echo "<tr>";
 
 				                  	//Description
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['description'] . "</td>";
+				                  	echo "<td align='center'>" . $row['description'] . "</td>";
 
 				                  	//Price
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['cost'] . "</td>";
+				                  	echo "<td align='center'>" . $row['cost'] . "</td>";
 
 				                  	//Product ID
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['product_id'] . "</td>";
+				                  	echo "<td align='center'>" . $row['product_id'] . "</td>";
 
 				                  	echo "</tr>";
+				                  }
+			                  ?>   
+			            </tbody>
+					</table>
+                </div>
+			</div>
+		</div>
+        <div class="col-lg-5">
+            <div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-shopping-cart fa-fw"></i> Customers
+				</div>
+				<div class="panel-body">
+                    <table id="customers" class="table table-striped table-bordered"><?php
+							$query = "SELECT name, idnumber FROM CUSTOMER ORDER BY IDNUMBER";
+        
+							$result = $mysqli->query($query);
+				
+				        	//display column headers
+				            echo "<thead>";
+					        	echo "<th style='text-align:center' width=\"" . 2*(100/(mysqli_num_fields($result)+2)) . "%\">Name</th>";
+	            				echo "<th style='text-align:center' width=\"" . 100/(mysqli_num_fields($result)+2) . "%\">Customer ID</th></tr>";
+				            echo "</thead>";
+
+				            //display the data
+				            echo "<tbody>";
+				            	while($row = mysqli_fetch_array($result)){
+				                  	echo "<tr>";
+
+				                  	//Name
+				                  	echo "<td align='center'>" . $row['name'] . "</td>";
+
+	        			          	//Phone Number
+            			      		echo "<td align='center'>" . $row['idnumber'] . "</td>";
+
+            			      		echo "</tr>";
 				                  }
 			                  ?>   
 			            </tbody>
