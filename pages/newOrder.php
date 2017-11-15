@@ -102,13 +102,14 @@
 				</div>
 				<div class="panel-body">
                     <table id="products" class="table table-striped table-bordered"><?php
-							$query = "SELECT description, product_id FROM PRODUCT ORDER BY product_id ASC";
+							$query = "SELECT description, cost, product_id FROM PRODUCT ORDER BY product_id ASC";
         
 							$result = $mysqli->query($query);
 				
 				        	//display column headers
 				            echo "<thead>";
 					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Description</th>";
+					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Price Each</th>";
 				            	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Product ID</th>";
 				            echo "</thead>";
 
@@ -119,6 +120,9 @@
 
 				                  	//Description
 				                  	echo "<td align='center' style='padding: 15px'>" . $row['description'] . "</td>";
+
+				                  	//Price
+				                  	echo "<td align='center' style='padding: 15px'>" . $row['cost'] . "</td>";
 
 				                  	//Product ID
 				                  	echo "<td align='center' style='padding: 15px'>" . $row['product_id'] . "</td>";

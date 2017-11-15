@@ -43,19 +43,15 @@
 				                  	echo "<td align='center' style='padding: 15px'>" . $row['description'] . "</td>";
 
 	        			          	//Type
-	                  				//Description
 				                  	echo "<td align='center' style='padding: 15px'>" . $row['type'] . "</td>";
 
 	                  				//Quantity
-				                  	//Description
 				                  	echo "<td align='center' style='padding: 15px'>" . $row['quantity'] . "</td>";
 
 				                  	//Cost
-				                  	//Description
-				                  	echo "<td align='center' style='padding: 15px'>" . $row['cost'] . "</td>";
+				                  	echo "<td align='center' style='padding: 15px'>$" . $row['cost'] . "</td>";
 
 				                  	//Image
-				                  	//Description
 				                  	echo "<td align='center' style='padding: 15px'><img src=\"/images/" . $row['product_image'] . "\" alt=\"" . $row['description'] . "\" style=\"width:50px;height:50px\"></td>";
 				                  	
 				                  	echo "</tr>";
