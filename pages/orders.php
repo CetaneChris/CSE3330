@@ -13,7 +13,8 @@
             <div class="panel panel-default">
                 <div style="height: 55px;padding:10px" class="panel-heading">
                     <button class="btn btn-secondary pull-left"><i class="fa fa-briefcase fa-fw"></i> Current Orders</button>
-                    <a class="btn btn-primary pull-right" role="button" href="/pages/newOrder.php">New Order <span class="fa fa-plus-circle fa-fw"></span></a>
+                    <a class="btn btn-primary" role="button" href="/pages/newOrder.php">New Order <span class="fa fa-plus-circle fa-fw"></span></a>
+                    <a class="btn btn-danger pull-right" role="button" href="/pages/delOrder.php">Refund <span class="fa fa-dollar fa-fw"></span></a>
                 </div>
                 <div class="panel-body">
                     <table id="orders" class="table table-striped table-bordered"><?php

@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <table id="products" class="table table-striped table-bordered"><?php
 							$query = "SELECT product_id, description, type, quantity, cost, product_image FROM PRODUCT ORDER BY product_id ASC";
-        
+
 							$result = $mysqli->query($query);
 				
 				        	//display column headers
@@ -40,7 +40,7 @@
 				                  	echo "<td align='center'>" . $row['product_id'] . "</td>";
 
 				                  	//Description
-				                  	echo "<td align='center'>" . $row['description'] . "</td>";
+				                  	echo "<td align='center'><a href = '/pages/updateProduct.php?product_id=".$row['product_id']."'>" . $row['description'] . "</a></td>";
 
 	        			          	//Type
 				                  	echo "<td align='center'>" . $row['type'] . "</td>";

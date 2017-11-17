@@ -13,11 +13,13 @@
             <div class="panel panel-default">
                 <div style="height: 55px;padding:10px" class="panel-heading">
                     <button class="btn btn-secondary pull-left"><i class="fa fa-briefcase fa-fw"></i> Customer Details</button>
-                    <a class="btn btn-primary pull-right" role="button" href="/pages/newCustomer.php">New Customer <span class="fa fa-plus-circle fa-fw"></span></a>
+                    <!-- <div class="col-sm-1"></div> -->
+                    <a class="btn btn-primary" role="button" href="/pages/newCustomer.php">New Customer <span class="fa fa-plus-circle fa-fw"></span></a>
+                    <a class="btn btn-danger pull-right" role="button" href="/pages/delCustomer.php">Remove Customer <span class="fa fa-close fa-fw"></span></a>
                 </div>
                 <div class="panel-body">
                     <table id="customers" class="table table-striped table-bordered"><?php
-							$query = "SELECT name, phoneno, address, email, username, createddate FROM CUSTOMER ORDER BY IDNUMBER";
+							$query = "SELECT name, phoneno, address, email, username, createddate FROM CUSTOMER ORDER BY IDNUMBER ASC";
         
 							$result = $mysqli->query($query);
 				
