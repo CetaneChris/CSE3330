@@ -13,7 +13,7 @@
             <div class="panel panel-default">
                 <div style="height: 55px;padding:10px" class="panel-heading">
                     <button class="btn btn-secondary pull-left"><i class="fa fa-briefcase fa-fw"></i> Current Inventory</button>
-                    <a class="btn btn-primary pull-right" role="button" href="/pages/newProduct.php">New Product <span class="fa fa-plus-circle fa-fw"></span></a>
+                    <a class="btn btn-primary" role="button" href="/pages/newProduct.php">New Product <span class="fa fa-plus-circle fa-fw"></span></a>
                 </div>
                 <div class="panel-body">
                     <table id="products" class="table table-striped table-bordered"><?php
