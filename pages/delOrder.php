@@ -66,7 +66,7 @@
 				        	//display column headers
 				            echo "<thead>";
 					        	echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Order Number</th>";
-	            				echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Customer Name</th></tr>";
+	            				echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Customer Name</th>";
 	            				echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Product</th>";
 	            				echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Quantity</th>";
 	            				echo "<th style='text-align:center' width=\"" . 100/mysqli_num_fields($result) . "%\">Total</th>";

@@ -12,14 +12,14 @@
 	$select = "SELECT TOTAL_PAID FROM `ORDER` WHERE ORDER_NUM = " . $order;
 	$delete = "DELETE FROM `ORDER` WHERE ORDER_NUM = " . $order;
 	if($result = $mysqli->query($select)){
-		if($result = $mysqli->query($delete)){
-			$result = mysqli_fetch_assoc($result);
+		if($result2 = $mysqli->query($delete)){
+			$result = mysqli_fetch_array($result, MYSQLI_ASSOC);
 			$fieldReport = "$" . $result['TOTAL_PAID'] . " has been refunded!";
 		}else
 			$fieldReport = "Order not found";
 	}else
 		$fieldReport = "Error in price";
-	header("refresh:10; url=/pages/customer.php");
+	header("refresh:10; url=/pages/orders.php");
 
 ?>
 

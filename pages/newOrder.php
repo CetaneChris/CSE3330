@@ -166,19 +166,12 @@
     <!-- /#page-wrapper -->
 </body>
 <script type="text/javascript">
-		function validateForm(){
-    	var name = document.getElementById("prodType").value;
-    	var dev= document.getElementById("deviceList").value;
-    	var radiocheck= false;
-    	if(validateRadio(document.forms["neworder"]["optradio"])){
-    		radiocheck = true;
-    	}
-    
-    
-    	
-    	var notes = document.getElementById("notes").value;
-    
-    	if(dg == "" || dev == "" ||  notes =="" || radiocheck == false){
+	function validateForm(){
+    	var prod  = document.getElementById("prod").value;
+    	var cust  = document.getElementById("cust").value;
+    	var quant = document.getElementById("cust").value;
+
+    	if(prod == "" || cust == "" || quant == ""){
     		document.getElementById('errordiv').style.display = 'block';
     
     		document.getElementById("errormessage").innerHTML = "All fields are required";

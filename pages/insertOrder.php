@@ -19,16 +19,18 @@
 		$cost  = number_format($price['cost'], 2);
 		$total_price = number_format(($cost * $quantity), 2);
 		$new_quantity = number_format($total_quantity['QUANTITY'],0) - number_format($quantity,0);
-		$insert = "INSERT INTO `order` (`product_id`, `cust_idno`, `quantity`, `price_each`, `total_paid`, `order_num`) VALUES ('" . $prodID . "', '" . $custID."', '" . $quantity . "', '" . $cost . "', '" . $total_price . "', NULL);";
-		$update = "UPDATE PRODUCT SET QUANTITY = " . $new_quantity . " WHERE product_id = " . $prodID;
-		if($result = $mysqli->query($insert) && $result2 = $mysqli->query($update))
-			$fieldReport = "Your order has been submitted!";
-		else
-			$fieldReport = "Error in submitting";
+		if($new_quantity > 0){
+			$insert = "INSERT INTO `order` (`product_id`, `cust_idno`, `quantity`, `price_each`, `total_paid`, `order_num`) VALUES ('" . $prodID . "', '" . $custID."', '" . $quantity . "', '" . $cost . "', '" . $total_price . "', NULL);";
+			$update = "UPDATE PRODUCT SET QUANTITY = " . $new_quantity . " WHERE product_id = " . $prodID;
+			if($result = $mysqli->query($insert) && $result2 = $mysqli->query($update))
+				$fieldReport = "Your order has been submitted!";
+			else
+				$fieldReport = "Error in submitting";
+		}else
+			$fieldReport = "Not enough inventory for sale";
 	}else
 		$fieldReport = "Unable to find price for product id " . $prodID;
 	//header("refresh:10; url=/pages/newOrder.php");
-
 ?>
 
 
@@ -42,6 +44,8 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
+        	<h3><?php echo "Amount paid: $" . $total_price?></h3>
+        	<h1></h1>
         	<p>This page will be redirected in 10 seconds</p>
         </div>
         <!-- /.col-lg-4 -->

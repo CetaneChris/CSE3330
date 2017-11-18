@@ -1,6 +1,6 @@
 <?php include_once ($_SERVER ['DOCUMENT_ROOT'] . '/pages/header.php'); ?>
 <script src="jquery.js"> </script>
-<title>Food Service Vendor New Product</title>
+<title>Food Service Vendor Update Product</title>
 
 <body>
     <div id="page-wrapper">
@@ -25,25 +25,21 @@
                             <tr>
                                 <td>Product ID</td>
                                 <td>
-                                	<div class="form-group">
-										<?php echo "<input type='text' name='productid' value=" . $_GET['product_id'] . " readonly>"?>
-									</div>
+										<?php echo "<input type=\"text\" class=\"form-control\" name=\"productid\" id=\"productid\" value=" . $_GET['product_id'] . " readonly>"?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Product Name</td>
                                 <td>
-                                	<div class="form-group">
 									<?php
 										$default_value = "SELECT description FROM product WHERE product_id = ". $_GET['product_id'];
 	                                	if ($default = $mysqli->query($default_value)){
 	                                		$default = mysqli_fetch_array($default);
-	                                		echo "<input type='text' name='description' value=\"" . $default['description'] . "\">";
+	                                		echo "<input type=\"text\" class=\"form-control\" name=\"description\" id=\"description\" value=\"" . $default['description'] . "\">";
 										}
 	                                	else
 	                                		echo "There was an error loading the product details";
 									?>
-									</div>
                                 </td>
                             </tr>
                             <tr>
@@ -62,14 +58,14 @@
 										echo "<option value=\"DESSERT\">DESSERT</option>";
 									}
 									else
-										echo "There was an error loading the product details";						
+										echo "There was an error loading the product details";
+										echo "</select>";
 									?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Quantity</td>
                                 <td>
-                                	<div class="form-group">
                                 	<?php
 	                                	$default_value = "SELECT quantity FROM product AS type WHERE product_id = ". $_GET['product_id'];
 	                                	if ($default = $mysqli->query($default_value)){
@@ -79,23 +75,35 @@
 	                                	else
 	                                		echo "There was an error loading the product details";
 									?>
-									</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Cost</td>
                                 <td>
-                                	<div class="form-group">
-										<?php
-	                                	$default_value = "SELECT cost FROM product AS type WHERE product_id = ". $_GET['product_id'];
+								<?php
+	                               	$default_value = "SELECT cost FROM product AS type WHERE product_id = ". $_GET['product_id'];
+	                               	if ($default = $mysqli->query($default_value)){
+	                               		$default = mysqli_fetch_array($default);
+	                               		echo "<input type=\"number\" class=\"form-control\" id=\"cost\" name=\"cost\" min=\"0\" step=\"0.01\" value=\"" . $default['cost'] . "\">";
+									}
+	                               	else
+	                               		echo "There was an error loading the product details";
+								?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Image</td>
+                                <td>
+                                <?php
+	                                	$default_value = "SELECT product_image FROM product WHERE product_id = ". $_GET['product_id'];
 	                                	if ($default = $mysqli->query($default_value)){
-	                                		$default = mysqli_fetch_array($default);
-	                                		echo "<input type=\"number\" class=\"form-control\" id=\"cost\" name=\"cost\" min=\"0\" step=\"0.01\" value=\"" . $default['cost'] . "\">";
+	                                		$default = mysqli_fetch_array($default, MYSQLI_ASSOC);
+	                                		echo "<img src=\"/images/" . $default['product_image'] . "\" alt =\"" . $default['product_image'] . "\" style=\"width:100px;height:100px\">";
 										}
 	                                	else
 	                                		echo "There was an error loading the product details";
-										?>
-									</div>
+								?>
+									<input type="file" class="form-control" id="fileName" name="fileName" accept="image/*">
                                 </td>
                             </tr>
                             <tr>
@@ -119,9 +127,8 @@
     	var type = document.getElementById("prodType").value;
 		var quantity = document.getElementById("quantity").value;
     	var cost = document.getElementById("cost").value;
-    	var Fname = document.getElementById("fileName").value;
     
-    	if(name == "" || type == "" || quantity == "" || cost == "" || Fname == ""){
+    	if(name == "" || type == "" || quantity == "" || cost == ""){
     		document.getElementById('errordiv').style.display = 'block';
     
     		document.getElementById("errormessage").innerHTML = "All fields are required";
