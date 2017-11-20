@@ -19,7 +19,7 @@
 		$cost  = number_format($price['cost'], 2);
 		$total_price = number_format(($cost * $quantity), 2);
 		$new_quantity = number_format($total_quantity['QUANTITY'],0) - number_format($quantity,0);
-		if($new_quantity > 0){
+		if(!($new_quantity < 0)){
 			$insert = "INSERT INTO `order` (`product_id`, `cust_idno`, `quantity`, `price_each`, `total_paid`, `order_num`) VALUES ('" . $prodID . "', '" . $custID."', '" . $quantity . "', '" . $cost . "', '" . $total_price . "', NULL);";
 			$update = "UPDATE PRODUCT SET QUANTITY = " . $new_quantity . " WHERE product_id = " . $prodID;
 			if($result = $mysqli->query($insert) && $result2 = $mysqli->query($update))

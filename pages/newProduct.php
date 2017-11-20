@@ -67,10 +67,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Current Date</td>
-                                <td><?php echo $date = date("m/d/Y", time());?></td>
-                            </tr>
-                            <tr>
                                 <td><input class="btn btn-primary pull-right" type="reset" value="Reset"></td>
                                 <td><input class="btn btn-primary" type="submit" value="Submit"></td>
                             </tr>
