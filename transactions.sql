@@ -1,3 +1,9 @@
+/*
+	Christopher Raymond & Laramie DeBaun	
+	Databases 2017 fall
+	Populate DB with basic starter data
+*/
+
 INSERT INTO `customer` VALUES('Christopher Raymond', '512-555-8822', '1111 Maple Street', 'christopher@gmail.com', 'GoodLuck', '1234pass', '2017-11-08 00:00:00', 1);
 INSERT INTO `customer` VALUES('John Smith', '512-555-1234', '1234 Main Street', 'john@smith.com', 'J.Smith', 'pass1234', '2017-11-15 00:00:00', 2);
 

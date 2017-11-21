@@ -1,3 +1,9 @@
+/*
+	Christopher Raymond & Laramie DeBaun
+	Databases Fall 2017
+	Food database creation
+*/
+
 -- Database: `food`
 
 CREATE DATABASE IF NOT EXISTS `food`;

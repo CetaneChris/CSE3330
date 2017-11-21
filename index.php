@@ -1,3 +1,8 @@
+/*
+	Christopher Raymond & Laramie DeBaun	
+	Databases 2017 fall
+	Homepage
+*/
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor Home</title>
 <div id="page-wrapper">
