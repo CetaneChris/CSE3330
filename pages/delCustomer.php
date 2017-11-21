@@ -1,11 +1,11 @@
-/*
+<!-- 
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Customer Deletion Page
-*/
+ -->
 <?php include_once ($_SERVER ['DOCUMENT_ROOT'] . '/pages/header.php'); ?>
 <script src="jquery.js"> </script>
-<title>Food Service Vendor New Customer</title>
+<title>Food Service Vendor Remove Customer</title>
 
 <body>
     <div id="page-wrapper">

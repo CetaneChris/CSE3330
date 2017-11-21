@@ -1,10 +1,10 @@
-/*
+<!-- 
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Order Deletion Confirmation Page
-*/
+ -->
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
-<title>Food Service Vendor New Customer</title>
+<title>Food Service Vendor Refund</title>
 
 <?php
 	if ($mysqli->connect_errno) {

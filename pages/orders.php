@@ -1,8 +1,8 @@
-/*
+<!--
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Orders Display Page
-*/
+-->
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor Orders</title>
 <div id="page-wrapper">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="panel-body">
                     <table id="orders" class="table table-striped table-bordered"><?php
-							$query = "SELECT * FROM `ORDER` ORDER BY PRODUCT_ID ASC";
+							$query = "SELECT * FROM `ORDER` ORDER BY ORDER_NUM ASC";
         
 							$result = $mysqli->query($query);
 				

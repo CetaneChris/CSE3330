@@ -1,8 +1,8 @@
-/*
+<!-- 
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Order Insert & redirect Page
-*/
+ -->
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor New Order</title>
 
@@ -35,7 +35,7 @@
 			$fieldReport = "Not enough inventory for sale";
 	}else
 		$fieldReport = "Unable to find price for product id " . $prodID;
-	//header("refresh:10; url=/pages/newOrder.php");
+	header("refresh:10; url=/pages/orders.php");
 ?>
 
 

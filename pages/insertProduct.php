@@ -1,8 +1,8 @@
-/*
+<!-- 
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Product Insert & Confirmation Page
-*/
+ -->
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor New Product</title>
 
@@ -29,7 +29,7 @@
 		$fieldReport = "Your product has been submitted!";
 	else
 		$fieldReport = "Error in submitting";
-	//header("refresh:10; url=/pages/newProduct.php");
+	header("refresh:10; url=/pages/products.php");
 
 ?>
 

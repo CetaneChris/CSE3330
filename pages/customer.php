@@ -1,8 +1,8 @@
-/*
+<!-- 
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Customer Display Page
-*/
+ -->
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor Customer</title>
 <div id="page-wrapper">
@@ -18,7 +18,6 @@
             <div class="panel panel-default">
                 <div style="height: 55px;padding:10px" class="panel-heading">
                     <button class="btn btn-secondary pull-left"><i class="fa fa-briefcase fa-fw"></i> Customer Details</button>
-                    <!-- <div class="col-sm-1"></div> -->
                     <a class="btn btn-primary" role="button" href="/pages/newCustomer.php">New Customer <span class="fa fa-plus-circle fa-fw"></span></a>
                     <a class="btn btn-danger pull-right" role="button" href="/pages/delCustomer.php">Remove Customer <span class="fa fa-close fa-fw"></span></a>
                 </div>

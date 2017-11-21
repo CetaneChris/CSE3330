@@ -1,8 +1,8 @@
-/*
+<!-- 
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	New Order Page
-*/
+ -->
 <?php include_once ($_SERVER ['DOCUMENT_ROOT'] . '/pages/header.php'); ?>
 <script src="jquery.js"> </script>
 <title>Food Service Vendor New Order</title>
@@ -174,7 +174,7 @@
 	function validateForm(){
     	var prod  = document.getElementById("prod").value;
     	var cust  = document.getElementById("cust").value;
-    	var quant = document.getElementById("cust").value;
+    	var quant = document.getElementById("quantity").value;
 
     	if(prod == "" || cust == "" || quant == ""){
     		document.getElementById('errordiv').style.display = 'block';

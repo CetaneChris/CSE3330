@@ -1,8 +1,8 @@
-/*
+<!--
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Product Update Page
-*/
+ -->
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php'); ?>
 <title>Food Service Vendor Update Product</title>
 

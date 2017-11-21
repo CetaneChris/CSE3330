@@ -1,8 +1,8 @@
-/*
+<!-- 
 	Christopher Raymond & Laramie DeBaun	
 	Databases 2017 fall
 	Product Display Page
-*/
+ -->
 <?php include_once ($_SERVER['DOCUMENT_ROOT'].'/pages/header.php');?>
 <title>Food Service Vendor Products</title>
 <div id="page-wrapper">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="panel-body">
                     <table id="products" class="table table-striped table-bordered"><?php
-							$query = "SELECT product_id, description, type, quantity, cost, product_image FROM PRODUCT ORDER BY product_id ASC";
+							$query = "SELECT product_id, description, `type`, quantity, cost, product_image FROM PRODUCT ORDER BY product_id ASC";
 
 							$result = $mysqli->query($query);
 				
