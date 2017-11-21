@@ -1,3 +1,8 @@
+/*
+	Christopher Raymond & Laramie DeBaun	
+	Databases 2017 fall
+	Order Deletion Page
+*/
 <?php include_once ($_SERVER ['DOCUMENT_ROOT'] . '/pages/header.php'); ?>
 <script src="jquery.js"> </script>
 <title>Food Service Vendor Refund</title>
