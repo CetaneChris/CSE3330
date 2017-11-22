@@ -14,11 +14,16 @@
 
 	$order = $_POST['order'];
 
-	$select = "SELECT TOTAL_PAID FROM `ORDER` WHERE ORDER_NUM = " . $order;
+	$select = "SELECT TOTAL_PAID, QUANTITY FROM `ORDER` WHERE ORDER_NUM = " . $order;
 	$delete = "DELETE FROM `ORDER` WHERE ORDER_NUM = " . $order;
+	$total_quantity = $mysqli->query("SELECT QUANTITY, PRODUCT_ID FROM PRODUCT WHERE PRODUCT_ID = (SELECT PRODUCT_ID FROM `ORDER` WHERE ORDER_NUM = " . $order . ")");
+	$total_quantity = mysqli_fetch_assoc($total_quantity);
+	
 	if($result = $mysqli->query($select)){
-		if($result2 = $mysqli->query($delete)){
-			$result = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		$result = mysqli_fetch_assoc($result);
+		$new_quantity = number_format($total_quantity['QUANTITY'],0) + number_format($result['QUANTITY'],0);
+		$update = "UPDATE PRODUCT SET QUANTITY = " . $new_quantity . " WHERE product_id = " . $total_quantity['PRODUCT_ID'];
+		if($mysqli->query($delete) && $mysqli->query($update)){
 			$fieldReport = "$" . $result['TOTAL_PAID'] . " has been refunded!";
 		}else
 			$fieldReport = "Order not found";

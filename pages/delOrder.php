@@ -59,7 +59,7 @@
 					<i class="fa fa-shopping-cart fa-fw"></i> Orders
 				</div>
 				<div class="panel-body">
-                    <table id="customers" class="table table-striped table-bordered"><?php
+                    <table id="orders" class="table table-striped table-bordered"><?php
 							$query = "SELECT O.ORDER_NUM AS ORDER_NUM, C.NAME AS NAME, P.DESCRIPTION AS DESCRIPTION, O.QUANTITY AS QUANTITY, O.TOTAL_PAID AS TOTAL_PAID
 								FROM `ORDER` O
 								LEFT OUTER JOIN PRODUCT P ON O.PRODUCT_ID = P.PRODUCT_ID
@@ -123,8 +123,11 @@
     		return false;
     	}
     }
+
+    window.onload = function() {
+	   	$('#orders').DataTable();
+    };
 </script>
-<!-- The following script gets the response for device dropdown using dg_id from the group selection -->
 <?php
     // Standard call for dependencies
     include_once ($_SERVER ['DOCUMENT_ROOT'] . '/pages/footer.php');
